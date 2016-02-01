@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>Exposé</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Introduction</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse in">
+        <div class="panel-body"><ul>
+        <li> Qu’est-ce que le fichier Robots.txt ?</li>
+        <li> Qu'est-ce que le fichier .htaccess</li>
+        <li> Conclusion</li>
+    </ul></div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Qu'est-ce que le fichier Robots.txt ?</a>
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body">Le robots.txt est un fichier au format texte, qui est placé à la racine du site. Ce fichier permet d'indiquer les ressources qui ne doivent pas être prises en compte par certains ou par tous les robots, tout en restant accessibles par les navigateurs Web. Le fichier Robots.txt doit être placé à la racine de votre site<br>
+        Exemple : www.monsite.com/robots.txt</div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Les commandes du fichier Robots.txt</a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body">La commande <b>"Useragent"</b> definit quel robot sera concerné par les commandes situé dans votre fichier. Si vous souhaitez que les commandes soient valables pour l'intégralité des robots, votre Robots.txt devra commencer par <b>"Useragent"</b>
+          La commande <b>"Disallow"</b> permet de restreindre l'accès à une partie de votre site internet.
+    <blockquote>Disallow : /recherche/ ?s=*</blockquote>
+            La commande <b>"Allow"</b> est à utiliser lorsque vous souhaitez autoriser un certain type de page dans un ensemble que vous avez bloqué.
+    <blockquote>"Allow: /recherche/?s=samsung"
+        (avec cette commande, seulement la page de recherche avec le mot clé "Samsung" sera autorisée.)
+    </blockquote>
+        </div>
+          </div> 
+      </div>
+           <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Qu'est-ce que le fichier .htaccess</a>
+        </h4>
+      </div>
+      <div id="collapse4" class="panel-collapse collapse">
+        <div class="panel-body"> Un .htaccess est un fichier qui sert à indiquer des commandes pour le serveur, c'est un fichier de configuration pour Apache. 
+   Par exemple, il sert à protéger une page par un mot de passe ou encore à créer ses propres pages d'erreurs (les erreurs 401, 403, 404... etc.).<br>
+Un .htaccess placé dans un répertoire agit sur ce répertoire et tous les sous-répertoires qu'il contient.
+Vous pouvez tout de même placer un autre .htaccess dans un des sous-répertoires de ce répertoire. Pour protéger un fichier, il suffit d'utiliser la balise < files>.</div>
+      </div>
+    </div>
+                <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Protéger un répertoire avec un .htaccess</a>
+        </h4>
+      </div>
+      <div id="collapse5" class="panel-collapse collapse">
+        <div class="panel-body"> Nous allons voir comment protéger un répertoire facilement à l'aide d'un .htaccess.
+   Voici le code : <code><br>
+       AuthUserFile /exemple/.htpasswd<br>
+AuthName "Accès protégé"<br>
+AuthType Basic<br>
+Require valid-user</code>
+   <h3>AuthUserFile: </h3>C'est l'instruction pour indiquer le chemin du fichier qui contient les mots de passe (.htpasswd).
+   <h3>AuthName: </h3> Cette instruction sert à définir le texte qui invitera la personne à entrer ses identifiants.
+   <h3>AuthType Basic: </h3>AuthType Basic indique qu'il faut utiliser AuthUserFile pour vérifier les mots de passe.
+   <h3>Require valid-user: </h3>On indique que seuls les utilisateurs identifiés sont autorisés. </div>
+      </div>
+                     </div>
+     <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">Personnaliser les erreurs</a>
+        </h4>
+      </div>
+        <div id="collapse6" class="panel-collapse collapse">
+        <div class="panel-body">
+<code>ErrorDocument 401 /erreurs/erreur_401.php<br>
+ErrorDocument 403 /erreurs/erreur_403.php<br>
+ErrorDocument 404 /erreurs/erreur_404.php<br>
+ErrorDocument 500 /erreurs/erreur_500.php</code>
+    <p>
+    <h3>ErrorDocument</h3> 400:Bad Request: la syntaxe de la requête est mal formulée.<br>
+401:Unhautorized: l'utilisateur n'a pas entré le bon mot de passe pour accéder au contenu.<br>
+403:Forbidden: l'accès au contenu est interdit.<br>
+404:Not Found: le document n'a pas été trouvé.<br>
+500:Internal Server Error: le serveur a rencontré une erreur interne (erreur de script ou erreur passagère).<br>
+503:Service Unvailable: le serveur ne peut pas répondre à cause d'une surcharge de trafic (trop de visiteurs). </div>
+      </div>
+    </div>
+     <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">Conclusion</a>
+        </h4>
+      </div>
+        <div id="collapse7" class="panel-collapse collapse">
+        <div class="panel-body"> Le fichier Robots.txt sert à indiqué au robots de google quel pages doit-être référencer.<br>
+        Le fichier .htaccess de configuration d'apache qui protége les pages par mot de passe et permet de crée les pages d'erreur.
+   </div>
+      </div>
+      </div>
+    </div>
+</div>
+    
+</body>
+</html>
